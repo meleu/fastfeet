@@ -1,3 +1,5 @@
+// legal, exportei arquivo de config com a senha...
+
 module.exports = {
   dialect: 'postgres',
   host: 'localhost',
