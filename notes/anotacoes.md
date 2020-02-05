@@ -37,11 +37,9 @@ src/
 
 #### nodemon + sucrase
 
-nodemon
-: reinicia a aplicação a cada mudança no código
+nodemon: reinicia a aplicação a cada mudança no código
 
-sucrase
-: permite que usemos `import ... from ...` no lugar de `require()`
+sucrase: permite que usemos `import ... from ...` no lugar de `require()`
 
 
 Instalar como dependência de desenvolvimento (opção `-D`):
