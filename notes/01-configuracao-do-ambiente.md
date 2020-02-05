@@ -61,7 +61,7 @@ Adicionar ao `package.json`:
 ```json
   "scripts": {
     "dev": "nodemon src/server.js",
-    "dev:debug" "nodemon --inspect"
+    "dev:debug": "nodemon --inspect"
   }
 ```
 
