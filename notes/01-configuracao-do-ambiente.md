@@ -1,21 +1,18 @@
-# Anotações feitas durante o desenvolvimento
+# Configuração do Ambiente de Desenvolvimento
 
-- [Etapa 1/4](#etapa-14)
-    - [Ferramentas](#ferramentas)
-        - [ExpressJS](#expressjs)
-        - [nodemon + sucrase](#nodemon--sucrase)
-            - [debugar via VSCode](#debugar-via-vscode)
-        - [ESLint + Prettier + EditorConfig](#eslint--prettier--editorconfig)
-            - [EditorConfig](#editorconfig)
-        - [docker](#docker)
-        - [PostgreSQL](#postgresql)
-            - [Postbird](#postbird)
-        - [Sequelize](#sequelize)
+- [Ferramentas](#ferramentas)
+- [ExpressJS](#expressjs)
+- [nodemon + sucrase](#nodemon--sucrase)
+    - [debugar via VSCode](#debugar-via-vscode)
+- [ESLint + Prettier + EditorConfig](#eslint--prettier--editorconfig)
+    - [EditorConfig](#editorconfig)
+- [docker](#docker)
+- [PostgreSQL](#postgresql)
+    - [Postbird](#postbird)
+- [Sequelize](#sequelize)
 
 
-## Etapa 1/4
-
-### Ferramentas
+## Ferramentas
 
 Instalar:
 
@@ -27,7 +24,7 @@ Instalar:
     - https://github.com/meleu/vscode-preferences
 
 
-#### ExpressJS
+## ExpressJS
 
 ```
 yarn add express
@@ -48,7 +45,7 @@ src/
 └── server.js
 ```
 
-#### nodemon + sucrase
+## nodemon + sucrase
 
 nodemon: reinicia a aplicação a cada mudança no código
 
@@ -77,7 +74,7 @@ Criar o arquivo `.nodemon.json`:
 }
 ```
 
-##### debugar via VSCode
+### debugar via VSCode
 
 1. No VSCode, vai na seção de "Debug and Run" (atalho: `Ctrl+Shift+D`)
 2. Inicie um novo `launch.json`.
@@ -97,7 +94,7 @@ Criar o arquivo `.nodemon.json`:
 ```
 
 
-#### ESLint + Prettier + EditorConfig
+## ESLint + Prettier + EditorConfig
 
 Ir na seção de plugins do VSCode e instalar ESLint.
 
@@ -162,7 +159,7 @@ Ir nas configurações do vscode: `Ctrl+Shift+P` e digite `settings json`. E adi
   },
 ```
 
-##### EditorConfig
+### EditorConfig
 
 EditorConfig é útil quando trabalhamos em projetos onde os outros desenvolvedores utilizam editores diferentes do nosso (VSCode).
 
@@ -181,7 +178,7 @@ insert_final_newline = true
 ```
 
 
-#### docker
+## docker
 
 Instalar docker seguindo as instruções em https://docs.docker.com/install/ e não esquecer de seguir as instruções de Post-install.
 
@@ -196,7 +193,7 @@ docker logs containerName   # mostra os logs do containerName
 docker run                  # executa um processo em um novo container
 ```
 
-#### PostgreSQL
+## PostgreSQL
 
 Container para o PostgreSQL: [https://hub.docker.com/_/postgres](https://hub.docker.com/_/postgres)
 
@@ -207,14 +204,14 @@ docker run --name database -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
 
 **Observação**: na opção `-p` o primeiro número é a porta da sua máquina "real", e o número depois do `:` é a porta do container.
 
-##### Postbird
+### Postbird
 
 Uma GUI bem bacaninha para interagir com o PostgreSQL: https://www.electronjs.org/apps/postbird
 
 Uma vez conectado ao PostgreSQL através do Postbird, criar uma database (template deixa em branco e encoding UTF8).
 
 
-#### Sequelize
+## Sequelize
 
 Instalando Sequelize a as dependências para trabalhar com o dialeto do PostgreSQL:
 
