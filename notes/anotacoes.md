@@ -1,5 +1,18 @@
 # Anotações feitas durante o desenvolvimento
 
+- [Etapa 1/4](#etapa-14)
+    - [Ferramentas](#ferramentas)
+        - [ExpressJS](#expressjs)
+        - [nodemon + sucrase](#nodemon--sucrase)
+            - [debugar via VSCode](#debugar-via-vscode)
+        - [ESLint + Prettier + EditorConfig](#eslint--prettier--editorconfig)
+            - [EditorConfig](#editorconfig)
+        - [docker](#docker)
+        - [PostgreSQL](#postgresql)
+            - [Postbird](#postbird)
+        - [Sequelize](#sequelize)
+
+
 ## Etapa 1/4
 
 ### Ferramentas
