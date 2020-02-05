@@ -81,13 +81,14 @@ Criar o arquivo `.nodemon.json`:
 3. Remova a linha com a propriedade `program`.
 4. Altere as propriedades do `configurations` que estão listadas abaixo:
 
-```json
+```js
 {
   "configurations": [
     {
       "request": "attach",
-        "restart": true,
-        "protocol": "inspector"
+      // remover "program"
+      "restart": true,
+      "protocol": "inspector"
     }
   ]
 }
