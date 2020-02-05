@@ -1,3 +1,19 @@
+### Linux ###
+*~
+
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
+
+### Node ###
 # Logs
 logs
 *.log
@@ -75,18 +91,27 @@ typings/
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 
-# Next.js build output
+# next.js build output
 .next
 
 # Nuxt.js build / generate output
 .nuxt
 dist
 
+
+# rollup.js default build output
+dist/
+
 # Gatsby files
 .cache/
-# Comment in the public line in if your project uses Gatsby and *not* Next.js
+# Uncomment the public line if your project uses Gatsby
 # https://nextjs.org/blog/next-9-1#public-directory-support
+# https://create-react-app.dev/docs/using-the-public-folder/#docsNav
 # public
+
+# Storybook build outputs
+.out
+.storybook-out
 
 # vuepress build output
 .vuepress/dist
@@ -102,3 +127,44 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Temporary folders
+tmp/
+temp/
+
+### Vim ###
+# Swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Session
+Session.vim
+Sessionx.vim
+
+# Temporary
+.netrwhist
+
+# Auto-generated tag files
+tags
+
+# Persistent undo
+[._]*.un~
+
+# Coc configuration directory
+.vim
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+
+# End of https://www.gitignore.io/api/vim,node,linux,visualstudiocode
