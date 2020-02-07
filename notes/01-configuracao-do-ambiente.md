@@ -10,6 +10,7 @@
 - [PostgreSQL](#postgresql)
     - [Postbird](#postbird)
 - [Sequelize](#sequelize)
+- [bcrypt + JWT + Yup](#bcrypt--jwt--yup)
 
 
 ## Ferramentas
@@ -250,4 +251,10 @@ module.exports = {
 };
 ```
 
+## bcrypt + JWT +Yup
 
+Ferramentas usadas para lidar autenticação.
+
+```
+yarn add bcryptjs jsonwebtoken yup
+```
