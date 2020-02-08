@@ -9,6 +9,7 @@ module.exports = {
           name: 'Distribuidora FastFeet',
           email: 'admin@fastfeet.com',
           password_hash: bcrypt.hashSync('asdfg!@#$%', 8),
+          role: 0,
           created_at: new Date(),
           updated_at: new Date()
         }

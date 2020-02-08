@@ -1,7 +1,14 @@
 import * as Yup from 'yup';
 import User from '../models/User';
 
+const roles = {
+  unconfirmed: -1,
+  admin: 0,
+  confirmed: 1
+};
+
 class UserController {
+  // create a new user
   async store(req, res) {
     const schema = Yup.object().shape({
       name: Yup.string().required(),
@@ -26,10 +33,12 @@ class UserController {
     }
 
     const { id, name, email } = await User.create(req.body);
+    const role = roles.unregistered;
 
-    return res.json({ id, name, email });
+    return res.json({ id, name, email, role });
   }
 
+  // change user's info
   async update(req, res) {
     const schema = Yup.object().shape({
       name: Yup.string(),
@@ -53,6 +62,7 @@ class UserController {
 
     const { email, oldPassword } = req.body;
 
+    console.log(req.userId);
     const user = await User.findByPk(req.userId);
 
     if (email && email !== user.email) {
