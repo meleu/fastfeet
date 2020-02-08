@@ -36,8 +36,9 @@
 
 - Editar o arquivo de migration gerado. Adicionar nome, rua, número, complemento, cidade, estado e CEP.
 
-PENDENTE:
 - Criar o model Recipient
+
 - Criar o RecipientController
-  - cadastro só pode ser feito por administradores autenticados
+
+- cadastro só pode ser feito por administradores autenticados
 

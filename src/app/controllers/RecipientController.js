@@ -1,5 +1,6 @@
 import * as Yup from 'yup';
 import Recipient from '../models/Recipient';
+import User from '../models/User';
 
 class RecipientController {
   // create a new recipient
@@ -16,6 +17,12 @@ class RecipientController {
 
     if (!(await schema.isValid(req.body))) {
       return res.status(400).json({ error: 'Validation has been failed' });
+    }
+
+    const user = await User.findByPk(req.userId);
+    if (!user || user.role !== 0) {
+      // role === 0 means admin. TODO: handle roles without "magic numbers"
+      return res.status(401).json({ error: 'Unauthorized' });
     }
 
     const {
@@ -57,6 +64,11 @@ class RecipientController {
       return res.status(400).json({ error: 'Validation has been failed' });
     }
 
+    const user = await User.findByPk(req.userId);
+    if (!user || user.role !== 0) {
+      // role === 0 means admin. TODO: handle roles without "magic numbers"
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
     const recipient = await Recipient.findByPk(req.params.id);
 
     if (!recipient) {
