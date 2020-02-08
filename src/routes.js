@@ -12,8 +12,8 @@ routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
 
 routes.use(authMiddleware);
+// once the authMiddleware finishes successfully, req has the userId field
 // from this line to the end of file, all routes require authentication
-
 routes.put('/users', UserController.update);
 
 routes.post('/recipients', RecipientController.store);
