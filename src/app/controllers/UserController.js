@@ -38,6 +38,11 @@ class UserController {
     return res.json({ id, name, email, role });
   }
 
+  async index(req, res) {
+    const users = await User.findAll();
+    return res.json(users);
+  }
+
   // change user's info
   async update(req, res) {
     const schema = Yup.object().shape({

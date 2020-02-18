@@ -1,6 +1,11 @@
+.env
+
 # minhas anotações
 notes/
 
+
+###############################################################################
+# Start of https://www.gitignore.io/api/vim,node,linux,visualstudiocode
 ### Linux ###
 *~
 
