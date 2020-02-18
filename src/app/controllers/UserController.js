@@ -39,7 +39,9 @@ class UserController {
   }
 
   async index(req, res) {
-    const users = await User.findAll();
+    const users = await User.findAll({
+      attributes: ['id', 'name', 'email', 'role', 'created_at']
+    });
     return res.json(users);
   }
 
