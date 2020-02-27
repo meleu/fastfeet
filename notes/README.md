@@ -57,8 +57,6 @@ Já existe uma tabela `users` no banco de dados, portanto usarei a mesma para ca
 
 - Criar o [src/config/multer.js](../src/config/multer.js).
 
-- Adicionar rota para `POST /files` para fazer upload de avatar [src/routes.js](../src/routes.js).
-
 - Criar um migration para os arquivos de imagem de avatar: `yarn sequelize migration:create --name=create-files`
     - Editar o arquivo criado em [src/database/migrations/](../src/database/migrations/).
     - `yarn sequelize db:migrate`
@@ -84,6 +82,8 @@ init() {
     .map(model => model.init(this.connection))
     .map(model => model.associate && model.associate(this.connection.models));
 ```
+
+- Adicionar rota para `POST /files` para fazer upload de avatar [src/routes.js](../src/routes.js).
 
 #### Criar rotas para o CRUD de entregadores
 
