@@ -58,7 +58,11 @@ Já existe uma tabela `users` no banco de dados, portanto usarei a mesma para ca
 - Criar o [src/config/multer.js](../src/config/multer.js).
 
 - Criar um migration para os arquivos de imagem de avatar: `yarn sequelize migration:create --name=create-files`
-    - Editar o arquivo criado em [src/database/migrations/](../src/database/migrations/).
+    - Editar o arquivo criado em [src/database/migrations/](../src/database/migrations/):
+        - id
+        - name
+        - path
+        - created_at / updated_at
     - `yarn sequelize db:migrate`
 
 - Criar o modelo para aquivos: [src/app/models/File.js](../src/app/models/File.js).
@@ -106,8 +110,7 @@ init() {
         - canceled_at (data de cancelamento, se cancelada);
         - start_date (data de retirada do produto);
         - end_date (data final da entrega);
-        - created_at;
-        - updated_at;
+        - created_at / updated_at
     - `yarn sequelize db:migrate`
 
 - Regras de Negócio para adicionar ao [src/app/controllers/DeliveryController.js](../src/app/controllers/DeliveryController.js):
@@ -130,8 +133,7 @@ init() {
     - Criar uma tabela: `yarn sequelize migration:create --name=create-delivery_problems`
         - delivery_id (referência da encomenda);
         - description (descrição do problema que o entregador teve);
-        - created_at;
-        - updated_at;
+        - created_at / updated_at
     - Rota para entregador cadastrar problemas na entrega: `POST {baseUrl}/delivery/2/problems`
     - Rota para listar problemas de uma encomenda: `GET {baseUrl}/delivery/2/problems`
     - Rota para listar todas as entregas com problema (admins only?)
