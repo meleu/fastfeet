@@ -1,5 +1,9 @@
-.env
+.babelrc
+__tests__/
+jest.config.js
 
+
+.env
 # minhas anotações
 notes/
 
