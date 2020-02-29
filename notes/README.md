@@ -51,45 +51,7 @@ Já existe uma tabela `users` no banco de dados, portanto usarei a mesma para ca
 
 #### Adicionando avatar ao User
 
-Anotações de aula: [uploading files](/meleu/gostack-bootcamp-notes/blob/master/05-API-improvements.md#uploading-files)
-
-- `yarn add multer`
-
-- Criar diretório `tmp/uploads`
-
-- Criar o [src/config/multer.js](../src/config/multer.js).
-
-- Criar um migration para os arquivos de imagem de avatar: `yarn sequelize migration:create --name=create-files`
-    - Editar o arquivo criado em [src/database/migrations/](../src/database/migrations/):
-        - id
-        - name
-        - path
-        - created_at / updated_at
-    - `yarn sequelize db:migrate`
-
-- Criar o modelo para aquivos: [src/app/models/File.js](../src/app/models/File.js).
-
-- Criar o controlador para arquivos: [src/app/controllers/FileController.js](../src/app/controllers/FileController.js).
-
-- Criar um migration para adicionar o campo `avatar_id` à tabela `users`:
-    - `yarn sequelize migration:creae --name=add-avatar-field-to-users`
-    - Editar o arquivo criado em [src/database/migrations/](../src/database/migrations/) e lembrar de usar `addColumn()` no lugar de `createTable()`.
-    - `yarn sequelize db:migrate`
-
-- Associar o arquivo com o modelo de User:
-    - criar o método `associate` em [src/app/models/User.js](../src/app/models/User.js).
-    - `this.belongsTo(models.File, { foreignKey: 'avatar_id' });`
-    - editar [src/database/index.js](../src/database/index.js):
-```js
-init() {
-  this.connection = new Sequelize(databaseConfig);
-
-  models
-    .map(model => model.init(this.connection))
-    .map(model => model.associate && model.associate(this.connection.models));
-```
-
-- Adicionar rota para `POST /files` para fazer upload de avatar [src/routes.js](../src/routes.js).
+Seguir as anotações de aula: [uploading files](/meleu/gostack-bootcamp-notes/blob/master/05-API-improvements.md#uploading-files)
 
 #### Criar rotas para o CRUD de entregadores
 
