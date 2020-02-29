@@ -51,6 +51,8 @@ Já existe uma tabela `users` no banco de dados, portanto usarei a mesma para ca
 
 #### Adicionando avatar ao User
 
+Anotações de aula: [uploading files](/meleu/gostack-bootcamp-notes/blob/master/05-API-improvements.md#uploading-files)
+
 - `yarn add multer`
 
 - Criar diretório `tmp/uploads`

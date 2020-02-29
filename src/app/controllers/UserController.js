@@ -4,7 +4,7 @@ import User from '../models/User';
 const roles = {
   unconfirmed: -1,
   admin: 0,
-  confirmed: 1
+  deliveryman: 1
 };
 
 class UserController {

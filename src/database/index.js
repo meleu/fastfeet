@@ -9,6 +9,7 @@ const models = [User, Recipient];
 class Database {
   constructor() {
     this.init();
+    this.models = models;
   }
 
   init() {
