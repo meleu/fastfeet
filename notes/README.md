@@ -2,6 +2,8 @@
 
 ## Etapa 1/4
 
+Especificações: https://github.com/Rocketseat/bootcamp-gostack-desafio-02
+
 ### Ferramentas
 
 - [Configuração do Ambiente de Desenvolvimento](01-configuracao-do-ambiente.md)
@@ -44,6 +46,8 @@
 
 
 ## Etapa 2/4
+
+Especificações: https://github.com/Rocketseat/bootcamp-gostack-desafio-03
 
 ### Gestão de entregadores
 
