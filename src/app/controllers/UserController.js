@@ -1,11 +1,6 @@
 import * as Yup from 'yup';
 import User from '../models/User';
-
-const roles = {
-  unconfirmed: -1,
-  admin: 0,
-  deliveryman: 1
-};
+import Role from '../etc/Roles';
 
 class UserController {
   // create a new user
@@ -33,7 +28,7 @@ class UserController {
     }
 
     const { id, name, email } = await User.create(req.body);
-    const role = roles.unregistered;
+    const role = Role.unconfirmed;
 
     return res.json({ id, name, email, role });
   }

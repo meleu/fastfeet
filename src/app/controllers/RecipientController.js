@@ -20,9 +20,10 @@ class RecipientController {
     }
 
     const user = await User.findByPk(req.userId);
-    if (!user || user.role !== 0) {
-      // role === 0 means admin. TODO: handle roles without "magic numbers"
-      return res.status(401).json({ error: 'Unauthorized' });
+    if (!user) {
+      return res
+        .status(401)
+        .json({ error: 'Given token is for an invalid user' });
     }
 
     const {
@@ -48,6 +49,14 @@ class RecipientController {
     });
   }
 
+  async index(req, res) {
+    const recipients = await Recipient.findAll();
+    // {
+    //   attributes: ['id', 'name', 'email', 'role', 'created_at']
+    // });
+    return res.json(recipients);
+  }
+
   // change recipient's info
   async update(req, res) {
     const schema = Yup.object().shape({
@@ -65,10 +74,12 @@ class RecipientController {
     }
 
     const user = await User.findByPk(req.userId);
-    if (!user || user.role !== 0) {
-      // role === 0 means admin. TODO: handle roles without "magic numbers"
-      return res.status(401).json({ error: 'Unauthorized' });
+    if (!user) {
+      return res
+        .status(401)
+        .json({ error: 'Given token is for an invalid user' });
     }
+
     const recipient = await Recipient.findByPk(req.params.id);
 
     if (!recipient) {
