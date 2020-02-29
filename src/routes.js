@@ -16,15 +16,16 @@ const routes = new Router();
 routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
 
+// ONLY AUTHENTICATED ROUTES BELOW --------------------------------------------
 routes.use(middlewareAuth);
 // once the middlewareAuth finishes successfully, req has the userId field
-// from this line to the end of file, all routes require authentication
 routes.get('/users', UserController.index);
 routes.put('/users', UserController.update);
 
 const upload = multer(multerConfig);
 routes.post('/files', upload.single('file'), FileController.store);
 
+// ONLY ADMIN ROUTES BELOW ----------------------------------------------------
 routes.use(middlewareIsAdmin);
 // from this line to the end of file, all routes require admin permissions
 routes.get('/recipients', RecipientController.index);

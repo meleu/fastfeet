@@ -51,7 +51,7 @@ Especificações: https://github.com/Rocketseat/bootcamp-gostack-desafio-03
 
 ### Gestão de entregadores
 
-Já existe uma tabela `users` no banco de dados, portanto usarei a mesma para cadastrar entregadores. A diferenciação se dará pelo campo `role`, onde `0` significa administrador e `1` significa entregador. Por enquanto isso está definido diretamente no [src/app/controllers/UserController.js](../src/app/controllers/UserController.js), mas posteriormente pretendo deixar isso mais explícito.
+Já existe uma tabela `users` no banco de dados, portanto usarei a mesma para cadastrar entregadores. A diferenciação se dará pelo campo `role`, onde `0` significa administrador e `1` significa entregador. Estas definições de estão declaradas em [src/app/etc/Roles.js](../src/app/etc/Roles.js).
 
 #### Adicionando avatar ao User
 
