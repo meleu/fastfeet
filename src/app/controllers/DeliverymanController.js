@@ -67,9 +67,58 @@ class DeliverymanController {
     return res.json(deliveryman);
   }
 
-  update(req, res) { }
+  async update(req, res) {
+    const schema = Yup.object().shape({
+      name: Yup.string(),
+      email: Yup.string().email(),
+      password: Yup.string().min(6)
+    });
 
-  delete(req, res) { }
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: 'Validation has been failed' });
+    }
+
+    const { email } = req.body;
+
+    const user = await User.findByPk(req.params.id);
+
+    if (!user) {
+      return res.status(404).json({ error: 'user not found' });
+    }
+
+    if (user && user.role !== Roles.deliveryman) {
+      return res.status(400).json({ error: 'user is not a deliveryman' });
+    }
+
+    if (email && email !== user.email) {
+      const userExists = await User.findOne({ where: { email } });
+      if (userExists) {
+        return res.status(400).json({ error: 'email is already in use' });
+      }
+    }
+
+    const { id, name } = await user.update(req.body);
+
+    return res.json({ id, name, email });
+  }
+
+  async delete(req, res) {
+    const { id } = req.params;
+    const deliveryman = await User.findByPk(id);
+
+    if (!deliveryman) {
+      return res.status(404).json({ error: 'user not found' });
+    }
+
+    if (deliveryman && deliveryman.role !== Roles.deliveryman) {
+      return res.status(400).json({ error: 'user is not a deliveryman' });
+    }
+
+    await deliveryman.destroy();
+    // TODO: deveria haver alguma verificação se .destroy() foi bem sucedido
+
+    return res.json({ message: `user ID ${id} has been successfully removed` });
+  }
 }
 
 export default new DeliverymanController();
