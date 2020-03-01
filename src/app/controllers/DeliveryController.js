@@ -2,6 +2,7 @@ import * as Yup from 'yup';
 import Delivery from '../models/Delivery';
 import User from '../models/User';
 import Recipient from '../models/Recipient';
+import File from '../models/File';
 import Roles from '../etc/Roles';
 
 class DeliveryController {
@@ -51,7 +52,38 @@ class DeliveryController {
     return res.json(delivery);
   }
 
-  index(req, res) { }
+  async index(req, res) {
+    const deliveries = await Delivery.findAll({
+      include: [
+        {
+          model: User,
+          as: 'deliveryman',
+          attributes: ['id', 'name']
+        },
+        {
+          model: Recipient,
+          as: 'recipient',
+          attributes: ['id', 'name']
+        },
+        {
+          model: File,
+          as: 'signature',
+          attributes: ['id', 'url']
+        }
+      ],
+      attributes: [
+        'id',
+        'product',
+        'status',
+        'start_date',
+        'end_date',
+        'signature_id',
+        'canceled_at'
+      ]
+    });
+
+    return res.json(deliveries);
+  }
 
   show(req, res) { }
 
