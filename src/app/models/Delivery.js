@@ -1,4 +1,5 @@
 import Sequelize, { Model } from 'sequelize';
+import Status from '../etc/DeliveryStatus';
 
 class Delivery extends Model {
   static init(sequelize) {
@@ -7,7 +8,22 @@ class Delivery extends Model {
         product: Sequelize.STRING,
         canceled_at: Sequelize.DATE,
         start_date: Sequelize.DATE,
-        end_date: Sequelize.DATE
+        end_date: Sequelize.DATE,
+        status: {
+          type: Sequelize.VIRTUAL,
+          get() {
+            if (this.canceled_at) {
+              return Status.canceled;
+            }
+            if (this.end_date) {
+              return Status.finished;
+            }
+            if (this.start_date) {
+              return Status.initiated;
+            }
+            return Status.registered;
+          }
+        }
       },
       {
         sequelize
