@@ -121,9 +121,73 @@ class DeliveryController {
     return res.json(delivery);
   }
 
-  update(req, res) { }
+  async update(req, res) {
+    const delivery = await Delivery.findByPk(req.params.id);
+    if (!delivery) {
+      return res
+        .status(404)
+        .json({ error: 'Given delivery ID does not exist' });
+    }
 
-  delete(req, res) { }
+    const schema = Yup.object().shape({
+      product: Yup.string(),
+      recipient_id: Yup.number(),
+      deliveryman_id: Yup.number()
+    });
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: 'Validation has been failed' });
+    }
+
+    if (req.body.recipient_id) {
+      const recipient = await Recipient.findByPk(req.body.recipient_id, {
+        attributes: ['name']
+      });
+      if (!recipient) {
+        return res
+          .status(400)
+          .json({ error: 'Given recipient ID does not exist' });
+      }
+    }
+
+    if (req.body.deliveryman_id) {
+      const deliveryman = await User.findByPk(req.body.deliveryman_id, {
+        attributes: ['name', 'role']
+      });
+      if (!deliveryman) {
+        return res
+          .status(400)
+          .json({ error: 'Given deliveryman ID does not exist' });
+      }
+      if (deliveryman.role !== Roles.deliveryman) {
+        return res.status(400).json({
+          error: `User ID ${req.body.deliveryman_id} is not a deliveryman`
+        });
+      }
+      // TODO: if deliveryman has been changed, send an email to the new one.
+    }
+
+    const { product, deliveryman_id, recipient_id } = await delivery.update(
+      req.body
+    );
+
+    return res.json({ product, deliveryman_id, recipient_id });
+  }
+
+  async delete(req, res) {
+    const { id } = req.params;
+    const delivery = await Delivery.findByPk(id);
+
+    if (!delivery) {
+      return res.status(404).json({ error: 'Delivery not found' });
+    }
+
+    await delivery.destroy();
+    // TODO: should I check if this delivery has a signature_id and delete it?
+
+    return res.json({
+      message: `Delivery ID ${id} has been successfully removed`
+    });
+  }
 }
 
 export default new DeliveryController();

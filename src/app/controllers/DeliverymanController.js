@@ -115,7 +115,8 @@ class DeliverymanController {
     }
 
     await deliveryman.destroy();
-    // TODO: deveria haver alguma verificação se .destroy() foi bem sucedido
+    // TODO: check if .destroy() succeded
+    // TODO: remove the deliveryman's avatar?
 
     return res.json({ message: `user ID ${id} has been successfully removed` });
   }
