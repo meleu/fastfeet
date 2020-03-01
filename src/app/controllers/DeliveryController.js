@@ -85,10 +85,45 @@ class DeliveryController {
     return res.json(deliveries);
   }
 
-  show(req, res) { }
+  async show(req, res) {
+    const delivery = await Delivery.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [
+        {
+          model: User,
+          as: 'deliveryman',
+          attributes: ['id', 'name']
+        },
+        {
+          model: Recipient,
+          as: 'recipient',
+          attributes: ['id', 'name']
+        },
+        {
+          model: File,
+          as: 'signature',
+          attributes: ['id', 'url']
+        }
+      ],
+      attributes: [
+        'id',
+        'product',
+        'status',
+        'start_date',
+        'end_date',
+        'signature_id',
+        'canceled_at'
+      ]
+    });
+
+    return res.json(delivery);
+  }
 
   update(req, res) { }
 
   delete(req, res) { }
 }
+
 export default new DeliveryController();
