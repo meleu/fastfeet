@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 import User from '../models/User';
-import Role from '../etc/Roles';
+import Roles from '../etc/Roles';
 
 class UserController {
   // create a new user
@@ -19,23 +19,21 @@ class UserController {
       return res.status(400).json({ error: 'Validation has been failed' });
     }
 
-    const userExists = await User.findOne({
-      where: { email: req.body.email }
-    });
+    const userExists = await User.findOne({ where: { email: req.body.email } });
 
     if (userExists) {
       return res.status(400).json({ error: 'email is already in use' });
     }
 
-    const { id, name, email } = await User.create(req.body);
-    const role = Role.unconfirmed;
+    req.body.role = Roles.unconfirmed;
+    const { id, name, email, role } = await User.create(req.body);
 
     return res.json({ id, name, email, role });
   }
 
   async index(req, res) {
     const users = await User.findAll({
-      attributes: ['id', 'name', 'email', 'role', 'created_at']
+      attributes: ['id', 'name', 'email', 'role', 'created_at', 'updated_at']
     });
     return res.json(users);
   }
