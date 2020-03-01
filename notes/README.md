@@ -87,6 +87,11 @@ Seguir as anotações de aula: [uploading files](/meleu/gostack-bootcamp-notes/b
     - `recipient_id` e `deliveryman_id` devem ser cadastrados no momento que for cadastrada a encomenda.
     - Quando uma encomenda é **cadastrada** para um entregador, enviar um email para ele com o nome do produto e uma mensagem informado que já está disponível para retirada.
 
+#### Configurar envio de emails
+
+Seguir as anotações de aula: [sending emails](/meleu/gostack-bootcamp-notes/blob/master/05-API-improvements.md#sending-emails).
+
+
 ### Funcionalidades do entregador
 
 1. Visualizar encomendas:
