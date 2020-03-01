@@ -81,6 +81,9 @@ Seguir as anotações de aula: [uploading files](/meleu/gostack-bootcamp-notes/b
         - created_at / updated_at
     - `yarn sequelize db:migrate`
 
+- Criar o modelo [src/app/models/Delivery.js](../src/app/models/Delivery.js).
+    - adicionar o carregamento do modelo em [src/database/index.js](../src/database/index.js).
+
 - Regras de Negócio para adicionar ao [src/app/controllers/DeliveryController.js](../src/app/controllers/DeliveryController.js):
     - `start_date` tem que ser entre 8h e 18h;
     - `end_date` deve ser cadastrada quando o entregador finalizar a entrega.
