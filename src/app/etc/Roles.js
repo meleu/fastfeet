@@ -1,5 +1,5 @@
 export default {
-  unconfirmed: -1,
   admin: 0,
-  deliveryman: 1
+  deliveryman: 1,
+  unconfirmed: 999
 };
