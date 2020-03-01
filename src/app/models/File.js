@@ -9,6 +9,7 @@ class File extends Model {
         url: {
           type: Sequelize.VIRTUAL,
           get() {
+            // TODO: should be able to deal with https
             return `http://${process.env.APP_HOST}:${process.env.APP_PORT}/files/${this.path}`;
           }
         }
