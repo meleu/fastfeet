@@ -1,5 +1,5 @@
 import Sequelize, { Model } from 'sequelize';
-import Status from '../etc/DeliveryStatus';
+import Status from '../../lib/DeliveryStatus';
 
 class Delivery extends Model {
   static init(sequelize) {

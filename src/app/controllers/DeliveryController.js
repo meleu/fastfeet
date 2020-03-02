@@ -3,7 +3,7 @@ import Delivery from '../models/Delivery';
 import User from '../models/User';
 import Recipient from '../models/Recipient';
 import File from '../models/File';
-import Roles from '../etc/Roles';
+import Roles from '../../lib/Roles';
 import Mail from '../../lib/Mail';
 
 class DeliveryController {

@@ -1,5 +1,5 @@
 import User from '../models/User';
-import Role from '../etc/Roles';
+import Role from '../../lib/Roles';
 
 export default async (req, res, next) => {
   const user = await User.findByPk(req.userId);

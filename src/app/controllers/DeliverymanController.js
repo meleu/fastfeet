@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 import User from '../models/User';
 import File from '../models/File';
-import Roles from '../etc/Roles';
+import Roles from '../../lib/Roles';
 
 class DeliverymanController {
   async store(req, res) {

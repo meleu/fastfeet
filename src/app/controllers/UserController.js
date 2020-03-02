@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 import User from '../models/User';
-import Roles from '../etc/Roles';
+import Roles from '../../lib/Roles';
 
 class UserController {
   // create a new user
