@@ -4,6 +4,7 @@ import User from '../models/User';
 import Recipient from '../models/Recipient';
 import File from '../models/File';
 import Roles from '../etc/Roles';
+import Mail from '../../lib/Mail';
 
 class DeliveryController {
   async store(req, res) {
@@ -47,7 +48,13 @@ class DeliveryController {
       deliveryman_id
     });
 
-    // TODO: send email to the deliveryman
+    if (delivery) {
+      await Mail.sendMail({
+        to: `${deliveryman.name} <${deliveryman.email}>`,
+        subject: 'Nova entrega a ser despachada',
+        text: 'Você tem uma nova entrega para ser despachada.'
+      });
+    }
 
     return res.json(delivery);
   }
